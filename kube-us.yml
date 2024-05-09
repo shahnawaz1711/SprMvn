@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-   name: user-service-dep
+   name: sprmvn-dep
 spec:
    selector:
       matchLabels:
-         app: user-service-pod
+         app: sprmvn-pod
    replicas: 1
    template:
       metadata:
          labels:
-            app: user-service-pod
+            app: sprmvn-pod
       spec:
          containers:
-            - name: user-service-cont
-              image: shahnawaz786/user-service:1.0
+            - name: sprmvn-cont
+              image: shahnawaz786/sprmvn:1.0
               imagePullPolicy: IfNotPresent
               ports:
                  - containerPort: 8081
@@ -22,10 +22,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-   name: user-service-svc
+   name: sprmvn-svc
 spec:
    selector:
-      app: user-service-pod
+      app: sprmvn-pod
    ports:
       - protocol: "TCP"
         port: 8081
